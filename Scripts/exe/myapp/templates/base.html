@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base Template{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff6347;
+        }
+        .hero {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #333;
+        }
+        .hero p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style> 
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <body>
+        <nav>
+            <div class="container nav-container">
+                <div class="logo">Remon</div>
+                <div>
+                    <a href="{% url 'person_show' %}">User Management</a>
+                    <a href="{% url 'person_list' %}">User List</a>
+                    <a href="{% url 'person_create' %}">Add New User</a>
+                </div>
+            </div>
+        </nav>
+        
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+

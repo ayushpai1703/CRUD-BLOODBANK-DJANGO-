@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donor List</title>
+</head>
+<body>
+    <h1>Donor List</h1>
+    <form method="GET" action="">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for donor in donors %}
+            <li>{{ donor.first_name }} {{ donor.last_name }} - {{ donor.blood_type }} - {{ donor.city }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'donor_create' %}">Add Donor</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Person List{% endblock %}
+
+{% block content %}
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #333;">Person List</h1>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">First Name</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Last Name</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Phone Number</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Email</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Blood Type</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">City</th>
+                    <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in people %}
+                <tr>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.first_name }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.last_name }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.phone_number }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.email }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.blood_type }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ person.city }}</td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <a href="{% url 'person_update' person.pk %}" style="background-color: #4CAF50; color: white; padding: 6px 12px; border: none; border-radius: 4px; text-decoration: none;">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Update Person
+    {% else %}
+        Create Person
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #333;">
+            {% if form.instance.pk %}
+                Update Person
+            {% else %}
+                Create Person
+            {% endif %}
+        </h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div style="margin-bottom: 15px;">
+                    {{ field.errors }}
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Save</button>
+
+            {% if form.instance.pk %}
+                <a href="{% url 'delete_person' form.instance.pk %}" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; margin-left: 10px;">Delete</a>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
